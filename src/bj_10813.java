@@ -1,4 +1,4 @@
-import java.util.Scanner;
+import java.util.*;
 
 public class bj_10813 {
     public static void main(String[] args) {
@@ -7,24 +7,23 @@ public class bj_10813 {
         //입력받기
         int N = Integer.parseInt(strings[0]);//공 개수
         int M = Integer.parseInt(strings[1]);//교환횟수
-        int temp = 0; //교환담을 변수
-        int X = 0;
-        int Y = 0;
-        int[] ints = new int[N];
+        int[] arr = new int[N];
         for(int i=0; i<N; i++){
-            ints[i] = i+1;
-        }
+            arr[i] = i+1;
+        }//[1,2,3,4,5]
+        int X, Y, temp = 0; //교환담을 변수
+
         for(int i=0; i<M; i++){
             strings = sc.nextLine().split(" ");
             X = Integer.parseInt(strings[0]);
             Y = Integer.parseInt(strings[1]);
-            temp = ints[X-1];
-            ints[X-1] = ints[Y-1];
-            ints[Y-1] = temp;
+            temp = arr[X-1];//[0,1,2,3,4]
+            arr[X-1] = arr[Y-1];
+            arr[Y-1] = temp;
         }
-
+        //형식 맞춰서 출력
         for(int i=0; i<N; i++){
-            System.out.print(i<N-1?ints[i]+" ":ints[i]);
+            System.out.print(i<N-1?arr[i]+" ":arr[i]);//2345
         }
     }
 }
