@@ -83,6 +83,24 @@ Hipstour는 **멀티 모듈 구조**를 기반으로 설계되어 있습니다.
 
 ```
 ---
+```mermaid
+graph TD
+    A[User Client] -->|API 호출| B[Frontend]
+
+    B -->|/api/search| C[Search Module]
+    B -->|/api/image| D[ImageUpload Module]
+    B -->|/api/tour/feed| E[TourAPI Adapter]
+
+    E -->|실시간 요청| F[TourAPI (외부)]
+    G[Sync Module] -->|Full/Incremental Sync| H[(Database)]
+
+    C --> H
+    D --> H
+    G --> F
+    H --> I[Common Module]
+    I --> C
+    I --> D
+```
 
 ## 3.내가 맡은 업무
 
